@@ -241,7 +241,7 @@ function echarts_2() {
     },
     xAxis: [{
         type: 'category',
-      		data: ['浙江', '上海', '江苏', '广东', '北京', '深圳', '安徽'],
+      		data: ['木工', '钢筋工', '普工', '技术员', '施工员'],
         axisLine: {
             show: true,
          lineStyle: {
@@ -296,14 +296,24 @@ function echarts_2() {
 		{
        
         type: 'bar',
-        data: [1500, 1200, 600, 200, 300, 300, 900],
+        data: [350, 400, 300, 450, 400],
         barWidth:'35%', //柱子宽度
        // barGap: 1, //柱子之间间距
         itemStyle: {
             normal: {
-                color:'#27d08a',
+                color:'#7F88CF',
                 opacity: 1,
-				barBorderRadius: 5,
+                label:{
+                  formatter:"{c}",
+                  show:true,
+                  position:'top',
+                  textStyle:{
+                    fontWeight:'bolder',
+                    fontSize:'12',
+                    color:'#7F88CF'
+                  }
+                }
+				// barBorderRadius: 5,
             }
         }
     }
@@ -414,8 +424,8 @@ function echarts_5() {
     }
 	
 function echarts_4() {
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echart4'));
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('echart4'));
 
     option = {
 	    tooltip: {
@@ -426,14 +436,20 @@ function echarts_4() {
             }
         }
     },
-		    legend: {
-    top:'0%',
-        data:['安卓','IOS'],
-                textStyle: {
-           color: 'rgba(255,255,255,.5)',
-			fontSize:'12',
-        }
-    },
+		//     legend: {
+    //     top:'0%',
+    //     data:['安卓','IOS'],
+    //       textStyle: {
+    //        color:  new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
+    //         offset: 0,  
+    //         color: '#A54DFF'  
+    //     }, {  
+    //         offset: 1,  
+    //         color: '#04C1E4'  
+    //     }]),//线条渐变色 
+		// 	    fontSize:'12',
+    //     }
+    // },
     grid: {
         left: '10',
 		top: '30',
@@ -444,31 +460,37 @@ function echarts_4() {
 
     xAxis: [{
         type: 'category',
-        boundaryGap: false,
-axisLabel:  {
-                textStyle: {
- 					color: "rgba(255,255,255,.6)",
-					fontSize:12,
-                },
-            },
-        axisLine: {
-			lineStyle: { 
-				color: 'rgba(255,255,255,.2)'
-			}
-
+        spiltLine:{
+          show:true,  
+          lineStyle: { 
+            color: 'rgba(255,255,255,.3)'
+          },
         },
-
-   data: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24']
-
-    }, {
+        boundaryGap: false,
+        axisLabel:  {
+          textStyle: {
+              color: "rgba(255,255,255,.6)",
+              fontSize:12,
+            },
+        },
+        axisLine: {
+         },
+        data: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'],
+        splitLine: {
+          "show": true,
+          lineStyle: { 
+            color: 'rgba(255,255,255,.3)'
+          },
+      },
+    }, 
+    
+    {
 
         axisPointer: {show: false},
         axisLine: {  show: false},
         position: 'bottom',
         offset: 20,
-
-       
-
+  
     }],
 
     yAxis: [{
@@ -488,35 +510,28 @@ axisLabel:  {
 
         splitLine: {
             lineStyle: {
-                 color: 'rgba(255,255,255,.1)'
+                 color: 'rgba(255,255,255,.3)'
             }
         }
     }],
     series: [
 		{
-        name: '安卓',
+        name: '扬尘平均数值',
         type: 'line',
          smooth: true,
         symbol: 'circle',
         symbolSize: 5,
         showSymbol: false,
         lineStyle: {
-			
             normal: {
-				color: '#0184d5',
-                width: 2
-            }
-        },
-        areaStyle: {
-            normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: 'rgba(1, 132, 213, 0.4)'
-                }, {
-                    offset: 0.8,
-                    color: 'rgba(1, 132, 213, 0.1)'
-                }], false),
-                shadowColor: 'rgba(0, 0, 0, 0.1)',
+              color:  new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
+                offset: 0,  
+                color: '#A54DFF'  
+            }, {  
+                offset: 1,  
+                color: '#04C1E4'  
+            }]),//线条渐变色 
+                width: 1
             }
         },
 			itemStyle: {
@@ -529,43 +544,6 @@ axisLabel:  {
         data: [3, 4, 3, 4, 3, 4, 3, 6, 2, 4, 2, 4,3, 4, 3, 4, 3, 4, 3, 6, 2, 4, 2, 4]
 
     }, 
-{
-        name: 'IOS',
-        type: 'line',
-        smooth: true,
-        symbol: 'circle',
-        symbolSize: 5,
-        showSymbol: false,
-        lineStyle: {
-			
-            normal: {
-				color: '#00d887',
-                width: 2
-            }
-        },
-        areaStyle: {
-            normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: 'rgba(0, 216, 135, 0.4)'
-                }, {
-                    offset: 0.8,
-                    color: 'rgba(0, 216, 135, 0.1)'
-                }], false),
-                shadowColor: 'rgba(0, 0, 0, 0.1)',
-            }
-        },
-			itemStyle: {
-			normal: {
-				color: '#00d887',
-				borderColor: 'rgba(221, 220, 107, .1)',
-				borderWidth: 12
-			}
-		},
-        data: [5, 3, 5, 6, 1, 5, 3, 5, 6, 4, 6, 4, 8, 3, 5, 6, 1, 5, 3, 7, 2, 5, 1, 4]
-
-    }, 
-	
 		 ]
 
 };
