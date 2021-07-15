@@ -3,7 +3,7 @@ $(function () {
     map();
     function map() {
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('map_1'));
+var myChart = echarts.init(document.getElementById('map_1'));
 var data = [
      {name: '海门', value: 69},
      {name: '鄂尔多斯', value: 12},
@@ -415,7 +415,7 @@ option = {
     },**/
     tooltip : {
         trigger: 'item',
-		formatter: function (params) {
+	    	formatter: function (params) {
               if(typeof(params.value)[2] == "undefined"){
               	return params.name + ' : ' + params.value;
               }else{
@@ -432,6 +432,7 @@ option = {
             }
         },
         roam: false,//禁止其放大缩小
+        zoom:1.2 ,
         itemStyle: {
             normal: {
                 areaColor: '#4c60ff',
