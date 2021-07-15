@@ -19,10 +19,11 @@ ref = setInterval(function(){
 // echarts_1();
 echarts_2();
 echarts_4();
-echarts_31();
-echarts_32();
-echarts_33();
+// echarts_31();
+// echarts_32();
+// echarts_33();
 echarts_5();
+echarts_kaoqin();
 // echarts_6();
 ringEchart();//环状图
 
@@ -321,12 +322,12 @@ function echarts_2() {
 	]
 };
       
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        window.addEventListener("resize",function(){
-            myChart.resize();
-        });
-    }
+  // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
+  window.addEventListener("resize",function(){
+      myChart.resize();
+  });
+}
 function echarts_5() {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('echart5'));
@@ -423,6 +424,123 @@ function echarts_5() {
         });
     }
 	
+    function echarts_kaoqin() {
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('kaoqin'));
+  
+      option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                lineStyle: {
+                    color: '#dddc6b'
+                }
+            }
+        },
+        grid: {
+            left: '10',
+        top: '30',
+            right: '10',
+            bottom: '10',
+            containLabel: true
+        },
+  
+          xAxis: [{
+              type: 'category',
+              spiltLine:{
+                show:true,  
+                lineStyle: { 
+                  color: 'rgba(255,255,255,.3)'
+                },
+              },
+              boundaryGap: false,
+              axisLabel:  {
+                textStyle: {
+                    color: "rgba(255,255,255,.6)",
+                    fontSize:12,
+                  },
+              },
+              axisLine: {
+              },
+              data: ['星期一', '星期二', '星期三', '星期四', '星期五','星期六','星期日'],
+              splitLine: {
+                "show": true,
+                lineStyle: { 
+                  color: 'rgba(255,255,255,.3)'
+                },
+            },
+          }, 
+          {
+            axisPointer: {show: false},
+            axisLine: {  show: false},
+            position: 'bottom',
+            offset: 20,
+          }],
+  
+          yAxis: [{
+              type: 'value',
+              axisTick: {show: false},
+              axisLine: {
+                  lineStyle: {
+                      color: 'rgba(255,255,255,.1)'
+                  }
+              },
+            axisLabel:  {
+                      textStyle: {
+                color: "rgba(255,255,255,.6)",
+                fontSize:12,
+                      },
+                  },
+      
+              splitLine: {
+                  lineStyle: {
+                      color: 'rgba(255,255,255,.3)'
+                  }
+              }
+          }],
+          series: [
+          {
+              name: '扬尘平均数值',
+              type: 'line',
+              smooth: true,
+              symbol: 'circle',
+              symbolSize: 5,
+              showSymbol: false,
+              lineStyle: {
+                  normal: {
+                    color:  new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
+                      offset: 0,  
+                      color: '#A54DFF'  
+                  }, {  
+                      offset: 1,  
+                      color: '#04C1E4'  
+                  }]),//线条渐变色 
+                      width: 1
+                  }
+              },
+            itemStyle: {
+            normal: {
+              color: '#0184d5',
+              borderColor: 'rgba(221, 220, 107, .1)',
+              borderWidth: 12
+            }
+          },
+                  // 区域填充样式
+                  areaStyle: {
+                    color: 'hsla(233, 45%, 65%, 1)'
+                },
+              data: [3000, 4000, 3000, 4000,9000,7000,6000]
+      
+          }, 
+        ]
+  
+  };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener("resize",function(){
+        myChart.resize();
+    });
+}
 function echarts_4() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('echart4'));
