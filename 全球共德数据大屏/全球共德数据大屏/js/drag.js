@@ -18,6 +18,7 @@ for (let i = 0; i < dragDiv.length; i++) {
     // 当拖动结束的时候，给拖动div所在位置下面的div做drag操作
     dragDiv[i].ondrop = function(){
         if(container != null && container != this){
+            if($(this).attr('id') == 'spec') return
             $(this).replaceWith(container)
             var l =  first_con.children().length
             // 最后一个盒子、插入一个盒子，供before使用
@@ -27,7 +28,6 @@ for (let i = 0; i < dragDiv.length; i++) {
             first_con.children().eq(first_index).before(this)
             // $(this).css({"background":"red"})
             // $(container).css({"background":"green"})
-
             // this 盒子重绘
             $(this).children().each(function(){
               if($(this).attr('id')){
