@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <title>中国3D地图</title>
 
-  <!-- <script src="https://geo.datav.aliyun.com/areas_v3/bound/520600_full.json?callback=areaJson" type="text/javascript" charset="utf-8"></script> -->
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/echarts-gl/2.0.6/echarts-gl.js"></script>
@@ -1001,6 +1000,16 @@
 
       // 图表配置项
       var option = {
+	  tooltip : {
+			formatter: function (params) {
+				console.log(params,'参数')
+				if(typeof(params.value)[2] == "undefined"){
+					return params.name + ' : ' + params.value;
+				}else{
+					return params.name + ' : ' + params.value[2];
+				}
+			  }
+	  },
         geo3D: {
           title: { // 标题
             top: '5%',
@@ -1011,12 +1020,13 @@
               color: '#ccc'
             }
           },
-          tooltip: { // 提示框
-            trigger: 'item',
-            formatter: function (params) {
-              return params.name;
-            },
-          },
+          // tooltip: { // 提示框
+          //   trigger: 'item',
+          //   formatter: function (params) {
+          //     return params.name;
+          //   },
+          // },
+          boxHeight: 20,
           type: 'map3D', // 系列类型
           name: 'map3D', // 系列名称
           map: 'china', // 地图类型。echarts-gl 中使用的地图类型同 geo 组件相同(ECharts 中提供了两种格式的地图数据，一种是可以直接 script 标签引入的 js 文件，引入后会自动注册地图名字和数据。还有一种是 JSON 文件，需要通过 AJAX 异步加载后手动注册。)
@@ -1133,7 +1143,6 @@
           data: convertData(data)
         }]
       };
-
       // 设置图表实例的配置项以及数据，万能接口，所有参数和数据的修改都可以通过setOption完成，ECharts 会合并新的参数和数据，然后刷新图表。
       myChart.setOption(option);
 
