@@ -1008,7 +1008,7 @@ $(function(){
 	         //     return params.name;
 	         //   },
 	         // },
-	         boxHeight: 10,
+	         boxHeight: 20,
 	         type: 'map3D', // 系列类型
 	         name: 'map3D', // 系列名称
 	         map: 'china', // 地图类型。echarts-gl 中使用的地图类型同 geo 组件相同(ECharts 中提供了两种格式的地图数据，一种是可以直接 script 标签引入的 js 文件，引入后会自动注册地图名字和数据。还有一种是 JSON 文件，需要通过 AJAX 异步加载后手动注册。)
